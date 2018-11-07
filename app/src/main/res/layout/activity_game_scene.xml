@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@drawable/plain"
+                android:alpha="0.7">
+
+    <!--fake toolbar-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/activity_button_back"
+            android:layout_width="30dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_arrow_back_white_36dp"/>
+
+        <TextView
+            android:id="@+id/activity_text_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:text="12 467 pts"/>
+
+        <ImageView
+            android:id="@+id/activity_image_heart"
+            android:layout_width="30dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@id/activity_text_heart"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/heart"/>
+
+        <TextView
+            android:id="@+id/activity_text_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:text="25"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"/>
+
+    </RelativeLayout>
+
+    <!--timer with possible answers-->
+    <LinearLayout
+        android:id="@+id/activity_layout_answers"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:weightSum="4"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/activity_linear_layout_joy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/activity_relative_layout_joy"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="25dp">
+
+                <TextView
+                    android:id="@+id/activity_text_joy"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/activity_image_joy"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/mood_joy_title"
+                    style="@style/MoodTextView"/>
+
+                <ImageView
+                    android:id="@+id/activity_image_joy"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mood_joy"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_linear_layout_anger"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/activity_relative_layout_anger"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp">
+
+                <TextView
+                    android:id="@+id/activity_text_anger"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mood_anger_title"
+                    style="@style/MoodTextView"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignStart="@id/activity_image_anger"/>
+
+                <ImageView
+                    android:id="@+id/activity_image_anger"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mood_anger"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_weight=".8">
+
+                <LinearLayout
+                    android:id="@+id/activity_linear_layout_fast"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="end"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:id="@+id/activity_relative_layout_fast"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/activity_text_nfast"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mood_neutral_fast_title"
+                        style="@style/MoodTextView"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignEnd="@id/activity_image_nfast"/>
+
+                    <ImageView
+                        android:id="@+id/activity_image_nfast"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mood_neutral_fast"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/activity_linear_layout_slow"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="end"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:id="@+id/activity_relative_layout_slow"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/activity_image_nslow"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mood_neutral_slow"/>
+
+                    <TextView
+                        android:id="@+id/activity_text_nslow"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mood_neutral_slow_title"
+                        style="@style/MoodTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignEnd="@id/activity_image_nslow"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.4">
+
+                <si.um.feri.guessemotion.ui.widget.ProgressCircleBar
+                    android:id="@+id/activity_progress_bar"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    app:cpb_title="20"
+                    app:cpb_strokeWidth="15"
+                    style="@style/Widget.ProgressBar.Holo.CircularProgressBar"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_weight=".8">
+
+                <LinearLayout
+                    android:id="@+id/activity_linear_layout_sadness"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="start"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:id="@+id/activity_relative_layout_sadness"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/activity_text_sadness"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mood_sadness_title"
+                        style="@style/MoodTextView"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignStart="@id/activity_image_sadness"/>
+
+                    <ImageView
+                        android:id="@+id/activity_image_sadness"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mood_sadness"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/activity_linear_layout_surprise"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="start"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:id="@+id/activity_relative_layout_surprise"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/activity_image_surprise"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mood_surprise"/>
+
+                    <TextView
+                        android:id="@+id/activity_text_surprise"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mood_surprise_title"
+                        style="@style/MoodTextView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@id/activity_image_surprise"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/activity_linear_layout_disgust"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/activity_relative_layout_disgust"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="25dp">
+
+                <ImageView
+                    android:id="@+id/activity_image_disgust"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mood_disgust"/>
+
+                <TextView
+                    android:id="@+id/activity_text_disgust"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mood_disgust_title"
+                    style="@style/MoodTextView"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignEnd="@id/activity_image_disgust"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_linear_layout_fear"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/activity_relative_layout_fear"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp">
+
+                <ImageView
+                    android:id="@+id/activity_image_fear"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mood_fear"/>
+
+                <TextView
+                    android:id="@+id/activity_text_fear"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mood_fear_title"
+                    style="@style/MoodTextView"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@id/activity_image_fear"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--music play/pause button with level info-->
+    <LinearLayout
+        android:id="@+id/activity_layout_downside"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <com.ohoussein.playpause.PlayPauseView
+            android:id="@+id/activity_button_play"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            app:fill_color="@color/colorBlack"
+            app:pause_bg="@color/colorAccent"
+            app:play_bg="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/activity_text_levelinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 1 - Question 1 / 20"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

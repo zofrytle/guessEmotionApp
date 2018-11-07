@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@drawable/plain">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/title"
+        android:layout_marginTop="20dp"/>
+
+
+        <com.nightonke.boommenu.BoomMenuButton
+            android:id="@+id/bmb"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:bmb_buttonEnum="textInsideCircle"
+            app:bmb_piecePlaceEnum="piecePlace_dot_2_1"
+            app:bmb_buttonPlaceEnum="buttonPlace_sc_2_1"
+            app:bmb_boomEnum="boomParabola_1"
+            app:bmb_buttonBottomMargin="150dp"
+            app:bmb_normalColor="@color/colorWhite"
+            app:bmb_buttonPlaceAlignmentEnum="buttonPlaceAlignment_bottom"
+            />
+
+    <com.google.android.gms.common.SignInButton
+        android:id='@+id/signInButton'
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/activity_button_statistics"
+            android:visibility="invisible"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/icon_statistics" />
+
+        <ImageView
+            android:id="@+id/activity_button_settings"
+            android:visibility="invisible"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/icon_settings" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

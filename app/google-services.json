@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "440362897973",
+    "firebase_url": "https://emotiquiz.firebaseio.com",
+    "project_id": "emotiquiz",
+    "storage_bucket": "emotiquiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440362897973:android:25bbefb831e2202b",
+        "android_client_info": {
+          "package_name": "com.example.cfdams.emotiquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440362897973-g0pqbvfval21tc0avr8nammguasfslpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cfdams.emotiquiz",
+            "certificate_hash": "b2fb18b035fd82d00b03541e9cce34c475792712"
+          }
+        },
+        {
+          "client_id": "440362897973-17hk8dgp3342ui48b05r9qk32phubbiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKQgXr_nGUyuBRy2r4vmg0ZvMl5ynrzws"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "440362897973-17hk8dgp3342ui48b05r9qk32phubbiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440362897973:android:2b00f735f8bf087e",
+        "android_client_info": {
+          "package_name": "si.um.feri.guessemotion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440362897973-17hk8dgp3342ui48b05r9qk32phubbiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKQgXr_nGUyuBRy2r4vmg0ZvMl5ynrzws"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440362897973:android:bd64f3712046019f",
+        "android_client_info": {
+          "package_name": "um.EmotiQuiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440362897973-ovh713eoudildnrma68m7b5onc83pcto.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "um.EmotiQuiz",
+            "certificate_hash": "f47812f6edf07015b2a467a1c5ee5ca4b2b06d68"
+          }
+        },
+        {
+          "client_id": "440362897973-17hk8dgp3342ui48b05r9qk32phubbiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKQgXr_nGUyuBRy2r4vmg0ZvMl5ynrzws"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "440362897973-17hk8dgp3342ui48b05r9qk32phubbiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

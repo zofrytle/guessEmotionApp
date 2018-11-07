@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Guess Emotion</string>
+    <string name="app_game_mode_ranked">Play ranked!</string>
+    <string name="app_game_mode_fun">Play just for fun!</string>
+    <string name="app_not_implemented">Not implemented yet…</string>
+
+    <string name="splash_feri_faculty">The Faculty of Electrical\nEngineering and Computer Science</string>
+    <string name="splash_ietk">Institute of Electronics and\nTelecommunications</string>
+    <string name="splash_develop_sign">Developed by students of Mobile Communication Services</string>
+
+    <!--mood's titles-->
+    <string name="mood_anger_title">Anger</string>
+    <string name="mood_joy_title">Joy</string>
+    <string name="mood_disgust_title">Disgust</string>
+    <string name="mood_fear_title">Fear</string>
+    <string name="mood_neutral_fast_title">Fast</string>
+    <string name="mood_neutral_slow_title">Slow</string>
+    <string name="mood_sadness_title">Sadness</string>
+    <string name="mood_surprise_title">Surprise</string>
+
+    <string name="level">Level</string>
+    <string name="question">Question</string>
+    <string name="correct">Correct!</string>
+    <string name="wrong">Wrong!</string>
+    <string name="out_of_time">Out of time!</string>
+    <string name="failure">X</string>
+    <string name="success">✓</string>
+    <string name="activity_final_scene_game_over_text">Game over text</string>
+    <string name="points_shortcut">%d pts</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_change_profile">Change profile</string>
+    <string name="settings_language">Language:</string>
+    <string name="settings_total_points">Total points:</string>
+    <string name="settings_total_games">Total games:</string>
+    <string name="settings_no_profile">No profile!\nPlease select one.</string>
+
+    <string name="exit_dialog_title">Warning!</string>
+    <string name="exit_dialog_desc_ranked">Are you sure you want leave the game? You will lose all of your progress.</string>
+    <string name="exit_dialog_desc_practise">Are you sure you want end practising?</string>
+    <string name="exit_dialog_yes">Yes</string>
+    <string name="exit_dialog_no">No</string>
+
+    <string name="statistics_title">Statistics</string>
+    <string name="statistics_local">Local</string>
+    <string name="statistics_global">Global</string>
+
+    <string name="final_score">Score</string>
+    <string name="final_game_over">Game over!</string>
+    <string name="final_restart">RESTART</string>
+
+    <string name="record_language_si">Slovenian</string>
+    <string name="record_language_english">English</string>
+
+</resources>

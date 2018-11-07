@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+
+    <color name="colorProgressCircleTitle">#bada55</color>
+    <color name="colorProgressCircleBackground">#787878</color>
+
+    <color name="colorGreen">#c9fc27</color>
+    <color name="colorRed">#ff0000</color>
+
+    <color name="progress_circle_default_progress">@color/colorWhite</color>
+    <color name="progress_circle_default_background">@color/colorProgressCircleBackground</color>
+    <color name="progress_circle_default_title">@color/colorProgressCircleTitle</color>
+    <color name="progress_circle_default_subtitle">#D1D1D1</color>
+
+</resources>

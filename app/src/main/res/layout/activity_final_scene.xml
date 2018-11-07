@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/plain">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/brlnsdb"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/final_score"
+        android:textColor="@color/colorWhite"
+        android:textSize="70sp"
+        />
+
+    <TextView
+        android:id="@+id/activity_final_scene_points_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/brlnsdb"
+        android:text="100000 pts"
+        android:textColor="@color/colorWhite"
+        android:textSize="40sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/brlnsdb"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/activity_final_scene_points_text"
+        android:text="@string/final_game_over"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        />
+
+
+    <ImageButton
+        android:id="@+id/activity_final_scene_button_restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/restart" />
+
+    <TextView
+        android:id="@+id/activity_final_scene_restart_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp"
+        android:fontFamily="@font/brlnsdb"
+        android:text="@string/final_restart"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/activity_final_scene_restart_clicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/activity_final_scene_button_restart"
+        android:layout_alignTop="@+id/activity_final_scene_button_restart"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/restartclickred" />
+
+</RelativeLayout>

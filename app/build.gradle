@@ -1,0 +1,94 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+    maven {
+        url 'https://maven.google.com'
+    }
+}
+
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "si.um.feri.guessemotion"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+
+    implementation "com.android.support:design:26.1.0"
+
+//  ADDED -->
+//    implementation 'com.android.support:appcompat-v7:28.0.0-alpha1'
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.firebase:firebase-database:16.0.3'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.google.firebase:firebase-firestore:17.1.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.4'
+    implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
+//  <-- ADDED
+
+//    implementation 'com.google.firebase:firebase-database:11.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    compile 'com.ramotion.circlemenu:circle-menu:0.3.0'
+    compile 'com.github.ohoussein.playpauseview:playpauseview:1.0.2'
+    compile "com.andkulikov:transitionseverywhere:1.7.8"
+    compile 'com.nightonke:boommenu:2.1.1'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+
+    // material dialog view
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+
+    // constraint layout
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // binding views with jake wharton
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+        transitive = true;
+    }
+}
+
+
+apply plugin: 'com.google.gms.google-services'
