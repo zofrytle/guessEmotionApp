@@ -33,6 +33,7 @@ import si.um.feri.guessemotion.game.core.GamePlay;
 import si.um.feri.guessemotion.game.data.domain.Game;
 import si.um.feri.guessemotion.game.data.enums.GamePlayMode;
 import si.um.feri.guessemotion.game.data.enums.GamePlayState;
+import si.um.feri.guessemotion.game.data.enums.Mood;
 import si.um.feri.guessemotion.service.GPSTracker;
 import si.um.feri.guessemotion.service.MediaPlayerService;
 import si.um.feri.guessemotion.service.MediaPlayerServiceCallback;
@@ -425,8 +426,6 @@ public class GameSceneActivity extends BaseActivity implements MediaPlayerServic
                 onWrongAnswer();
                 break;
         }
-        firebaseConnector.sendQuestion(gamePlay.getActualLevelAndQuestionInString());
-        firebaseConnector.sendResult(evaluateResult);
     }
 
     private void updateViews() {
@@ -494,7 +493,18 @@ public class GameSceneActivity extends BaseActivity implements MediaPlayerServic
         animateDownsideLayout();
         progressCircleBar.pauseAnimation();
         fadeNonCheckAnswers(answerPosition);
-        handleEvaluation(gamePlay.evaluateQuestion(answerPosition));
+
+        int result = gamePlay.evaluateQuestion(answerPosition);
+        handleEvaluation(result);
+
+        String answer = gamePlay.getMoodFromAnswerOrder(answerPosition).name();
+        String correctAnswer = gamePlay.getPrvsCorrectAnswer().name();
+
+        firebaseConnector.sendQuestion(gamePlay.getActualLevelAndQuestion());
+        firebaseConnector.sendResult(result);
+        firebaseConnector.sendAnswer(answer);
+        firebaseConnector.sendCorrectAnswer(correctAnswer);
+
     }
 
     private void animateDownsideLayout() {

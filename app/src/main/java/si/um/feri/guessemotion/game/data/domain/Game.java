@@ -64,10 +64,6 @@ public class Game {
     public UUID getUid() {
         return uid;
     }
-
-    public void setUid(UUID uid) {
-        this.uid = uid;
-    }
 }
 
 

@@ -31,8 +31,19 @@ public class FirebaseConnector {
 
     static public void sendQuestion(String _question){
         question = _question;
-        reference.child("users").child(user.getUid()).child("game").child(gameID.toString()).child(question).setValue(question);
+//        reference.child("users").child(user.getUid()).child("game").child(gameID.toString()).child(question).setValue(question);
     }
+
+    static public void sendAnswer(String _answer){
+        reference.child("users").child(user.getUid()).child("game").child(gameID.toString()).child(question).child("answer").setValue(_answer);
+
+    }
+
+    static public void sendCorrectAnswer(String _correctAnswer){
+        reference.child("users").child(user.getUid()).child("game").child(gameID.toString()).child(question).child("correct").setValue(_correctAnswer);
+
+    }
+
 
     static public void sendResult(int _result){
         String message;
@@ -54,7 +65,7 @@ public class FirebaseConnector {
                 break;
         }
 
-        reference.child("users").child(user.getUid()).child("game").child(gameID.toString()).child(question).setValue(message);
+        reference.child("users").child(user.getUid()).child("game").child(gameID.toString()).child(question).child("result").setValue(message);
     }
 
 }

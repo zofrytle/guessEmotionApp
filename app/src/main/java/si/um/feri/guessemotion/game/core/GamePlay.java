@@ -142,7 +142,7 @@ public class GamePlay {
     }
 
 
-    private Mood getMoodFromAnswerOrder(int answerOrder) {
+    public Mood getMoodFromAnswerOrder(int answerOrder) {
         switch (answerOrder) {
             case 0:
                 return Mood.JOY;
@@ -243,6 +243,11 @@ public class GamePlay {
         return App.getContext().getString(R.string.level) + " " + actlPositionLevel +
                 " - " + App.getContext().getString(R.string.question) + " " + actlPositionQuestion +
                 "/" + numberOfQuestionsInLevel;
+    }
+
+    public String getActualLevelAndQuestion() {
+        return App.getContext().getString(R.string.level) + " " + actlPositionLevel +
+                " - " + App.getContext().getString(R.string.question) + " " + actlPositionQuestion;
     }
 
     public String getActlRecordTitle() {

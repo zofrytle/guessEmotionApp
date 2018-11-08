@@ -115,7 +115,6 @@ public class MainMenuActivity extends BaseActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
 
-//        firebaseUser = mAuth.getCurrentUser();
         updateUI(firebaseUser);
         checkLanguage();
         loginUser();
@@ -187,7 +186,6 @@ public class MainMenuActivity extends BaseActivity {
                             firebaseUser = mAuth.getCurrentUser();
                             updateUI(firebaseUser);
 
-//                            FirebaseApp.initializeApp(this);
                             reference = FirebaseDatabase.getInstance().getReference();
 
                             reference.child("users").child(firebaseUser.getUid()).child("name").setValue(firebaseUser.getDisplayName());
