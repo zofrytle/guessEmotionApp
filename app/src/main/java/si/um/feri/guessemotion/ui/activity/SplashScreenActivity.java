@@ -32,7 +32,7 @@ public class SplashScreenActivity extends BaseActivity {
             public void run() {
                 login();
             }
-        }, 100); // show splash screen
+        }, 500); // show splash screen
     }
 
 

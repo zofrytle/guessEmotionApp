@@ -292,12 +292,11 @@ public class GameSceneActivity extends BaseActivity implements MediaPlayerServic
             livesText.setVisibility(View.VISIBLE);
             livesImage.setVisibility(View.VISIBLE);
 
-            firebaseConnector = new FirebaseConnector();
-
-            game = new Game(MainMenuActivity.getFirebaseUser());
-
-            firebaseConnector.sendGame(game.getUid());
         }
+
+        firebaseConnector = new FirebaseConnector();
+        game = new Game(MainMenuActivity.getFirebaseUser());
+        firebaseConnector.sendGame(game.getUid(), gamePlay.getGamePlayMode());
 
         pointsText.setText(String.format(Locale.getDefault(), getString(R.string.points_shortcut), gamePlay.getPoints()));
         livesText.setText(String.format(Locale.getDefault(), "%d", gamePlay.getLives()));
@@ -500,10 +499,10 @@ public class GameSceneActivity extends BaseActivity implements MediaPlayerServic
         String answer = gamePlay.getMoodFromAnswerOrder(answerPosition).name();
         String correctAnswer = gamePlay.getPrvsCorrectAnswer().name();
 
-        firebaseConnector.sendQuestion(gamePlay.getActualLevelAndQuestion());
-        firebaseConnector.sendResult(result);
-        firebaseConnector.sendAnswer(answer);
-        firebaseConnector.sendCorrectAnswer(correctAnswer);
+        firebaseConnector.sendQuestion(gamePlay.getActualLevelAndQuestion(), gamePlay.getGamePlayMode());
+        firebaseConnector.sendResult(result, gamePlay.getGamePlayMode());
+        firebaseConnector.sendAnswer(answer, gamePlay.getGamePlayMode());
+        firebaseConnector.sendCorrectAnswer(correctAnswer, gamePlay.getGamePlayMode());
 
     }
 

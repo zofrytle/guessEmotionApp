@@ -15,6 +15,10 @@ import java.io.Serializable;
 public enum GamePlayMode implements Serializable {
 
     RANKED,
-    PRACTICE
+    PRACTICE;
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

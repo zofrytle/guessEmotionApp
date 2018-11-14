@@ -1,6 +1,7 @@
 package si.um.feri.guessemotion.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -61,6 +62,7 @@ public class MainMenuActivity extends BaseActivity {
     static private GoogleSignInClient mGoogleSignInClient;
     static private FirebaseAuth mAuth;
     static private FirebaseUser firebaseUser = null;
+    SharedPreferences prefs;
 
     static private GoogleSignInAccount googleUser;
 
@@ -69,6 +71,10 @@ public class MainMenuActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        prefs = getSharedPreferences("users_pref", MODE_PRIVATE);
+
+
 
         TextInsideCircleButton.Builder builder = new TextInsideCircleButton.Builder()
                 .normalImageRes(R.drawable.play_ranked)
@@ -114,6 +120,13 @@ public class MainMenuActivity extends BaseActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
+        boolean login_status = prefs.getBoolean("login_status", false);
+        if (login_status) {
+            Log.v(TAG, "UserInfo>>User already logged in");
+            signIn();
+            firebaseUser = mAuth.getCurrentUser();
+//            this.finish();
+        }
 
         updateUI(firebaseUser);
         checkLanguage();
@@ -218,6 +231,10 @@ public class MainMenuActivity extends BaseActivity {
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, 123);
+
+        SharedPreferences.Editor editor = getSharedPreferences("users_pref", MODE_PRIVATE).edit();
+        editor.putBoolean("login_status", true);
+        editor.apply();
 
     }
     static public FirebaseUser getFirebaseUser() {
