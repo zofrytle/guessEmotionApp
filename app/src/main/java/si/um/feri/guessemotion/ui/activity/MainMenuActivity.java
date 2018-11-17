@@ -33,6 +33,8 @@ import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import si.um.feri.guessemotion.App;
@@ -151,11 +153,15 @@ public class MainMenuActivity extends BaseActivity {
     }
 
     private void checkLanguage() {
+        // TODO
         // if language is not set, then default value is si
+        String deviceLanguage = Locale.getDefault().getLanguage();
         String language = StorageUtils.loadStringPref(Constants.RECORDS_LANGUAGE, App.getContext());
         if (language == null || language.isEmpty()) {
             StorageUtils.saveStringPref(Constants.RECORDS_LANGUAGE, Constants.RECORDS_LANGUAGE_SI, App.getContext());
         }
+        if (deviceLanguage.equals("en"))
+            StorageUtils.saveStringPref(Constants.RECORDS_LANGUAGE, Constants.RECORDS_LANGUAGE_ENG, App.getContext());
     }
 
     private void loginUser() {
