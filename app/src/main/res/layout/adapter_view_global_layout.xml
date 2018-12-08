@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100">
+
+    <TextView
+        android:id="@+id/textViewGlobalName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="30"
+        android:gravity="center"
+        android:text="name"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewGlobalCountry"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="30"
+        android:gravity="center"
+        android:text="country"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textViewGlobalScore"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="40"
+        android:gravity="center"
+        android:text="score" />
+
+</LinearLayout>

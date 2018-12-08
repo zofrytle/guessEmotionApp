@@ -19,7 +19,7 @@ public class Constants {
     public static final String DATABASE_QUESTIONS = "questions";
 
 //    default values for game
-    public static final int DEFAULT_NUMBER_OF_LIVES = 30;
+    public static final int DEFAULT_NUMBER_OF_LIVES = 20;
     public static final int DEFAULT_TIME_ALLOWED_TO_ANSWER = 20;
     public static final int DEFAULT_NUMBER_OF_QUESTIONS_IN_LEVEL = 20;
     public static final int DEFAULT_NUMBER_OF_LEVELS = 4;

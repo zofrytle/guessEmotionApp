@@ -396,10 +396,15 @@ public class GameSceneActivity extends BaseActivity implements MediaPlayerServic
     }
 
     private void gameOver() {
+
+        GamePlayMode mode = gamePlay.getGamePlayMode();
+        int score = gamePlay.getPoints();
+//        firebaseConnector.sendScore(mode, score);
+
         Intent intent = new Intent(getApplicationContext(), FinalSceneActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("GAME_MODE",gamePlay.getGamePlayMode());
-        bundle.putInt("FINAL_POINTS", gamePlay.getPoints());
+        bundle.putSerializable("GAME_MODE", mode);
+        bundle.putInt("FINAL_POINTS", score);
 //        intent.putExtra("FINAL_POINTS", gamePlay.getPoints());
         intent.putExtras(bundle);
         startActivity(intent);
@@ -501,8 +506,7 @@ public class GameSceneActivity extends BaseActivity implements MediaPlayerServic
 
         firebaseConnector.sendQuestion(gamePlay.getActualLevelAndQuestion(), gamePlay.getGamePlayMode());
         firebaseConnector.sendResult(result, gamePlay.getGamePlayMode());
-        firebaseConnector.sendAnswer(answer, gamePlay.getGamePlayMode());
-        firebaseConnector.sendCorrectAnswer(correctAnswer, gamePlay.getGamePlayMode());
+        firebaseConnector.sendAnswer(answer, correctAnswer, gamePlay.getGamePlayMode());
 
     }
 

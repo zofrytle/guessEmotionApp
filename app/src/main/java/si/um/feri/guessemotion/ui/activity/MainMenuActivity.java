@@ -21,6 +21,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,19 +40,10 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import si.um.feri.guessemotion.App;
 import si.um.feri.guessemotion.R;
+import si.um.feri.guessemotion.game.data.domain.User;
 import si.um.feri.guessemotion.ui.activity.base.BaseActivity;
 import si.um.feri.guessemotion.util.Constants;
 import si.um.feri.guessemotion.util.StorageUtils;
-
-/**
- * Created by:
- *
- * Diana Sellárová,
- * Marek Urban,
- * Stanislav Blaško
- *
- * as assignment for Mobile communication services subject on Erasmus+ study.
- */
 
 public class MainMenuActivity extends BaseActivity {
 
@@ -65,6 +57,7 @@ public class MainMenuActivity extends BaseActivity {
     static private FirebaseAuth mAuth;
     static private FirebaseUser firebaseUser = null;
     SharedPreferences prefs;
+    static private User user = null;
 
     static private GoogleSignInAccount googleUser;
 
@@ -75,8 +68,6 @@ public class MainMenuActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         prefs = getSharedPreferences("users_pref", MODE_PRIVATE);
-
-
 
         TextInsideCircleButton.Builder builder = new TextInsideCircleButton.Builder()
                 .normalImageRes(R.drawable.play_ranked)
@@ -127,7 +118,6 @@ public class MainMenuActivity extends BaseActivity {
             Log.v(TAG, "UserInfo>>User already logged in");
             signIn();
             firebaseUser = mAuth.getCurrentUser();
-//            this.finish();
         }
 
         updateUI(firebaseUser);
@@ -210,6 +200,9 @@ public class MainMenuActivity extends BaseActivity {
                             reference.child("users").child(firebaseUser.getUid()).child("name").setValue(firebaseUser.getDisplayName());
                             reference.child("users").child(firebaseUser.getUid()).child("email").setValue(firebaseUser.getEmail());
                             reference.child("users").child(firebaseUser.getUid()).child("metadata").setValue(firebaseUser.getMetadata());
+                            String local = getBaseContext().getResources().getConfiguration().locale.getDisplayCountry();
+                            reference.child("users").child(firebaseUser.getUid()).child("country").setValue(local);
+                            setUser(new User(firebaseUser.getUid(), firebaseUser.getDisplayName(), local));
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -262,4 +255,12 @@ public class MainMenuActivity extends BaseActivity {
     }
 
     static public DatabaseReference getReference() {return reference;}
+
+    static public User getUser() {
+        return user;
+    }
+
+    static public void setUser(User _user) {
+        user = _user;
+    }
 }

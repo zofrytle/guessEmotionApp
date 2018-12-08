@@ -26,7 +26,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "si.um.feri.guessemotion"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.1"
@@ -70,22 +70,22 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    compile 'com.ramotion.circlemenu:circle-menu:0.3.0'
-    compile 'com.github.ohoussein.playpauseview:playpauseview:1.0.2'
-    compile "com.andkulikov:transitionseverywhere:1.7.8"
-    compile 'com.nightonke:boommenu:2.1.1'
-    compile 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.ramotion.circlemenu:circle-menu:0.3.0'
+    implementation 'com.github.ohoussein.playpauseview:playpauseview:1.0.2'
+    implementation "com.andkulikov:transitionseverywhere:1.7.8"
+    implementation 'com.nightonke:boommenu:2.1.1'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     // material dialog view
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
 
     // constraint layout
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     // binding views with jake wharton
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+    implementation('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
         transitive = true;
     }
 }

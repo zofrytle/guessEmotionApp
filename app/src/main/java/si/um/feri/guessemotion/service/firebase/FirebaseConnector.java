@@ -1,53 +1,53 @@
 package si.um.feri.guessemotion.service.firebase;
 
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
+import android.support.annotation.NonNull;
 
-import java.util.UUID;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import si.um.feri.guessemotion.game.data.enums.GamePlayMode;
 import si.um.feri.guessemotion.ui.activity.MainMenuActivity;
 
 public class FirebaseConnector {
 
-    static private FirebaseUser user;
+    static private FirebaseUser firebaseUser;
     static private DatabaseReference reference;
     static private UUID gameID;
     static private String question;
 
     public FirebaseConnector(){
-        user = MainMenuActivity.getFirebaseUser();
-        reference = MainMenuActivity.getReference();
+        reference = FirebaseDatabase.getInstance().getReference();
+        firebaseUser = MainMenuActivity.getFirebaseUser();
     }
 
     static public void sendGame (UUID _gameID, GamePlayMode gamePlayMode){
         gameID = _gameID;
 
-        reference.child("users").child(user.getUid()).child(gamePlayMode.name()).child(gameID.toString()).setValue(gameID);
-        reference.child("users").child(user.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child("date").setValue(new Timestamp(System.currentTimeMillis()));
-
+        reference.child("users").child(firebaseUser.getUid()).child(gamePlayMode.name()).child(gameID.toString()).setValue(gameID);
+        reference.child("users").child(firebaseUser.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child("date").setValue(new Timestamp(System.currentTimeMillis()));
+        reference.child("users").child(firebaseUser.getUid()).child("RANKED").child(gameID.toString()).child("score").setValue(0);
 
     }
 
     static public void sendQuestion(String _question, GamePlayMode gamePlayMode){
         question = _question;
-        reference.child("users").child(user.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child(question).setValue(question);
+        reference.child("users").child(firebaseUser.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child(question).setValue(question);
     }
 
-    static public void sendAnswer(String _answer, GamePlayMode gamePlayMode){
-        reference.child("users").child(user.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child(question).child("answer").setValue(_answer);
-
+    static public void sendAnswer(String _answer, String _correctAnswer, GamePlayMode gamePlayMode){
+        reference.child("users").child(firebaseUser.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child(question).child("answer").setValue(_answer);
+        reference.child("users").child(firebaseUser.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child(question).child("correct").setValue(_correctAnswer);
     }
-
-    static public void sendCorrectAnswer(String _correctAnswer, GamePlayMode gamePlayMode){
-        reference.child("users").child(user.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child(question).child("correct").setValue(_correctAnswer);
-
-    }
-
 
     static public void sendResult(int _result, GamePlayMode gamePlayMode){
-        String message;
+        final String message;
         switch (_result) {
             // run out of the time
             case -1:
@@ -66,7 +66,32 @@ public class FirebaseConnector {
                 break;
         }
 
-        reference.child("users").child(user.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child(question).child("result").setValue(message);
+        reference.child("users").child(firebaseUser.getUid()).child(gamePlayMode.name()).child(gameID.toString()).child(question).child("result").setValue(message);
+
+        if(gamePlayMode.name().equals("RANKED")) {
+
+
+            reference.child("users").child(firebaseUser.getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    DataSnapshot childSnapshot = dataSnapshot.child("RANKED").child(gameID.toString()).child("score");
+
+                    @NonNull
+                    Long value = (Long) childSnapshot.getValue();
+
+                    if (message.equals("correct")) {
+                        value = value + 20;
+                        reference.child("users").child(firebaseUser.getUid()).child("RANKED").child(gameID.toString()).child("score").setValue(value);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
 }
