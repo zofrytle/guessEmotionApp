@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import si.um.feri.guessemotion.R;
@@ -20,34 +21,17 @@ import si.um.feri.guessemotion.ui.activity.base.BaseActivity;
  * as assignment for Mobile communication services subject on Erasmus+ study.
  */
 
-public class SplashScreenActivity extends BaseActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                login();
-            }
-        }, 500); // show splash screen
-    }
-
-
-    @Override
-    public int getLayoutRes() {
-        return R.layout.activity_splash_screen;
-    }
-
-    private void login(){
-        Intent intent = new Intent(SplashScreenActivity.this, MainMenuActivity.class);
-        // remove this activity from back stack, then finish it
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+    protected void onCreate ( Bundle savedInstanceState ) {
+        super.onCreate ( savedInstanceState );
+        Intent intent = new Intent(this, MainMenuActivity.class );
         startActivity(intent);
         finish();
     }
+
 
 
 }
