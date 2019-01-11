@@ -73,36 +73,36 @@ public class FirebaseConnector {
 
             reference.child("users").child(firebaseUser.getUid())
                     .addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    DataSnapshot childSnapshot = dataSnapshot.child("RANKED").child(gameID.toString()).child("score");
-                    DataSnapshot totalScoreSnapshot = dataSnapshot.child("RANKED").child("totalScore");
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            DataSnapshot childSnapshot = dataSnapshot.child("RANKED").child(gameID.toString()).child("score");
+                            DataSnapshot totalScoreSnapshot = dataSnapshot.child("RANKED").child("totalScore");
 
-                    Long total;
-                    if(totalScoreSnapshot.getValue() == null) {
-                        reference.child("users").child(firebaseUser.getUid()).child("RANKED").child("totalScore").setValue(0);
-                        total = Long.valueOf(0);
-                    }
-                    else
-                        total = (Long) dataSnapshot.child("RANKED").child("totalScore").getValue();
+                            Long total;
+                            if(totalScoreSnapshot.getValue() == null) {
+                                reference.child("users").child(firebaseUser.getUid()).child("RANKED").child("totalScore").setValue(0);
+                                total = Long.valueOf(0);
+                            }
+                            else
+                                total = (Long) dataSnapshot.child("RANKED").child("totalScore").getValue();
 
 
-                    @NonNull
-                    Long value = (Long) childSnapshot.getValue();
+                            @NonNull
+                            Long value = (Long) childSnapshot.getValue();
 
-                    if (message.equals("correct")) {
-                        value = value + 20;
-                        total = total + 20;
-                        reference.child("users").child(firebaseUser.getUid()).child("RANKED").child(gameID.toString()).child("score").setValue(value);
-                        reference.child("users").child(firebaseUser.getUid()).child("RANKED").child("totalScore").setValue(total);
-                    }
-                }
+                            if (message.equals("correct")) {
+                                value = value + 20;
+                                total = total + 20;
+                                reference.child("users").child(firebaseUser.getUid()).child("RANKED").child(gameID.toString()).child("score").setValue(value);
+                                reference.child("users").child(firebaseUser.getUid()).child("RANKED").child("totalScore").setValue(total);
+                            }
+                        }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
-            });
+                        }
+                    });
         }
     }
 

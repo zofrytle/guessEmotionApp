@@ -102,20 +102,22 @@
 
 
                 <TextView
+                    android:id="@+id/totalGamesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="--"
                     android:textColor="@color/colorWhite"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/totalPointsTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="--"
                     android:textColor="@color/colorWhite"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/activity_textview_language"

@@ -13,6 +13,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,6 +46,8 @@ public class SettingsActivity extends BaseActivity {
     @BindView(R.id.activity_layout_user_info) RelativeLayout layoutUser;
     @BindView(R.id.activity_textview_name) TextView nameTextView;
     @BindView(R.id.activity_image_profile) CircleImageView imageView;
+    @BindView(R.id.totalGamesTextView) TextView totalGamesTextView;
+    @BindView(R.id.totalPointsTextView) TextView totalPointsTextView;
 
 
 
@@ -85,6 +93,8 @@ public class SettingsActivity extends BaseActivity {
         nameTextView.setText(googleUser.getDisplayName());
         imageView.setImageURI(googleUser.getPhotoUrl());
 
+        setTotals();
+
         String username = StorageUtils.loadStringPref(Constants.USER_NAME, App.getContext());
 //        if (username == null || username.isEmpty()) {
 //            layoutNoUser.setVisibility(View.VISIBLE);
@@ -93,6 +103,44 @@ public class SettingsActivity extends BaseActivity {
 //            layoutUser.setVisibility(View.VISIBLE);
 //            layoutNoUser.setVisibility(View.GONE);
 //        }
+    }
+
+    private void setTotals(){
+
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        final FirebaseUser firebaseUser = MainMenuActivity.getFirebaseUser();
+
+        reference.child("users").child(firebaseUser.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        int totalGames = 0;
+                        for (DataSnapshot childSnapshot : dataSnapshot.child("RANKED").getChildren()){
+                            totalGames += 1;
+                        }
+                        if(totalGames>0) totalGames-=1;
+
+                        totalGamesTextView.setText(String.valueOf(totalGames));
+
+                        DataSnapshot totalScoreSnapshot = dataSnapshot.child("RANKED").child("totalScore");
+
+                        Long total;
+                        if(totalScoreSnapshot.getValue() == null) {
+                            reference.child("users").child(firebaseUser.getUid()).child("RANKED").child("totalScore").setValue(0);
+                            total = Long.valueOf(0);
+                        }
+                        else
+                            total = (Long) dataSnapshot.child("RANKED").child("totalScore").getValue();
+
+                        totalPointsTextView.setText(String.valueOf(total));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
     }
 
     private void setLanguageBySavedPreference(String language) {

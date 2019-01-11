@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
+import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 
 import java.util.Locale;
@@ -69,7 +70,7 @@ public class MainMenuActivity extends BaseActivity {
 
         prefs = getSharedPreferences("users_pref", MODE_PRIVATE);
 
-        TextInsideCircleButton.Builder builder = new TextInsideCircleButton.Builder()
+        TextOutsideCircleButton.Builder builder = new TextOutsideCircleButton.Builder()
                 .normalImageRes(R.drawable.play_ranked)
                 .imagePadding(new Rect(30, 30, 30, 30))
                 .normalText(getString(R.string.app_game_mode_ranked))
@@ -84,7 +85,7 @@ public class MainMenuActivity extends BaseActivity {
                 });
         menuButton.addBuilder(builder);
 
-        builder = new TextInsideCircleButton.Builder()
+        builder = new TextOutsideCircleButton.Builder()
                 .normalImageRes(R.drawable.play_practice)
                 .imagePadding(new Rect(30, 30, 30, 30))
                 .normalText(getString(R.string.app_game_mode_fun))
@@ -148,10 +149,11 @@ public class MainMenuActivity extends BaseActivity {
         String deviceLanguage = Locale.getDefault().getLanguage();
         String language = StorageUtils.loadStringPref(Constants.RECORDS_LANGUAGE, App.getContext());
         if (language == null || language.isEmpty()) {
-            StorageUtils.saveStringPref(Constants.RECORDS_LANGUAGE, Constants.RECORDS_LANGUAGE_SI, App.getContext());
+            if (deviceLanguage.equals("slo"))
+                StorageUtils.saveStringPref(Constants.RECORDS_LANGUAGE, Constants.RECORDS_LANGUAGE_SI, App.getContext());
+            else
+                StorageUtils.saveStringPref(Constants.RECORDS_LANGUAGE, Constants.RECORDS_LANGUAGE_ENG, App.getContext());
         }
-        if (deviceLanguage.equals("en"))
-            StorageUtils.saveStringPref(Constants.RECORDS_LANGUAGE, Constants.RECORDS_LANGUAGE_ENG, App.getContext());
     }
 
     private void loginUser() {
