@@ -1,0 +1,9 @@
+Access to database online - Firebase
+
+https://console.firebase.google.com/?hl=pl
+
+login: mcswinterproject
+password: Maribor2018
+
+Project: EmotiQuiz
+Data stored in: Database -> Realtime Database
